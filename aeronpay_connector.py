@@ -22,7 +22,8 @@ class AeronPayConnector:
     def constuct_header(self): return {
         "client-id": self.client_id,
         "client-secret" : self.client_secret,
-        "Content-Type" : "application/json"
+        "Content-Type" : "application/json",
+        "accept" : "application/json"
     }
 
     def check_balance(self) -> dict:
