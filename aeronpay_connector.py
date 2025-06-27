@@ -9,7 +9,7 @@ class AeronPayConnector:
     ENDPOINTS = {
         "request_payout": "api/payout/imps",
         "check_status": "reports/transactionStatus",
-        "check_balance": "balance/check_balance",
+        "check_balance": "api/balance/check_balance",
     }
 
     def __init__(self):
