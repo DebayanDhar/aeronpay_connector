@@ -1,9 +1,11 @@
 import os
 import requests
+from dotenv import load_dotenv
 
 
 
 class AeronPayConnector:
+    load_dotenv()
     API_ENV = os.getenv("API_ENV")
     BASE_URL = f"https://api.aeronpay.in/api/serviceapi-{API_ENV}/"
 
