@@ -1,14 +1,11 @@
-import os
 import requests
-from dotenv import load_dotenv
-
+import config
 
 
 class AeronPayConnector:
-    load_dotenv()
-    API_ENV = os.getenv("API_ENV")
-    BASE_URL = f"https://api.aeronpay.in/api/serviceapi-{API_ENV}/"
 
+    
+    BASE_URL = config.BASE_URL
     ENDPOINTS = {
         "request_payout": "api/payout/imps",
         "check_status": "reports/transactionStatus",
@@ -16,10 +13,10 @@ class AeronPayConnector:
     }
 
     def __init__(self):
-        self.client_id = os.getenv("CLIENT_ID")
-        self.client_secret = os.getenv("CLIENT_SECRET")
-        self.account_no = os.getenv("ACCOUNT_NO")
-        self.merchant_id = os.getenv("MERCHANT_ID")
+        self.client_id = config.CLIENT_ID
+        self.client_secret = config.CLIENT_SECRET
+        self.account_no = config.ACCOUNT_NO
+        self.merchant_id = config.MERCHANT_ID
 
 
     def constuct_header(self): return {
@@ -30,7 +27,6 @@ class AeronPayConnector:
 
     def check_balance(self) -> dict:
         url = f"{self.BASE_URL}{self.ENDPOINTS["check_balance"]}"
-        print(url)
         body = {
             "client_referenceId": "1234567890",
             "account_type": "Merchant",
