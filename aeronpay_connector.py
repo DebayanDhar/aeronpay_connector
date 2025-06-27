@@ -38,4 +38,5 @@ class AeronPayConnector:
         res = requests.get(url, json=body, headers=self.constuct_header())
         return res.json()
 
-    
+obj = AeronPayConnector()
+print(obj.check_balance())
