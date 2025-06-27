@@ -27,7 +27,8 @@ class AeronPayConnector:
     }
 
     def check_balance(self) -> dict:
-        url = f"{self.BASE_URL}{self.ENDPOINTS["check_balance"]}"
+        #url = f"{self.BASE_URL}{self.ENDPOINTS["check_balance"]}"
+        url = "https://api.aeronpay.in/api/serviceapi-prod/api/balance/check_balance"
         print(url)
         body = {
             "client_referenceId": "1234567890",
