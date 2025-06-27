@@ -30,7 +30,7 @@ class AeronPayConnector:
         url = f"{self.BASE_URL}{self.ENDPOINTS["check_balance"]}"
         
         body = {
-            "client_referenceId": "1234567890",
+            "client_referenceId": "112233",
             "account_type": "Merchant",
             "accountNumber": self.account_no,
             "merchant_id": self.merchant_id
