@@ -8,7 +8,7 @@ class AeronPayConnector:
     BASE_URL = config.BASE_URL
     ENDPOINTS = {
         "request_payout": "api/payout/imps",
-        "check_status": "reports/transactionStatus",
+        "check_status": "api/reports/transactionStatus",
         "check_balance": "api/balance/check_balance",
     }
 
@@ -25,6 +25,42 @@ class AeronPayConnector:
         "Content-Type" : "application/json",
         "accept" : "application/json"
     }
+    def get_beneDetails(self):return {
+        "bankAccount" 
+        "ifsc"
+        "name"
+        "email"
+        "phone"
+        "address1"
+    }
+
+    def check_status(self) -> dict:
+        url = f"{self.BASE_URL}{self.ENDPOINTS["check_status"]}"
+        body = {
+            "client_referenceId": "112233",
+            "mobile" : self.account_no
+        }
+
+        res = requests.post(url, json=body, headers=self.constuct_header())
+        return res.json()
+    
+    def request_payout(self) -> dict:
+        url = f"{self.BASE_URL}{self.ENDPOINTS["request_payout"]}"
+        body = {
+            "bankProfileId" : "1",
+            "accountNumber" : self.account_no,
+            "latitude" : "20.1236",
+            "longitude" : "78.1228",
+            "amount" : "10",
+            "client_referenceId": "112233",
+            "transferMode" : "imps",
+            "remarks" : "imps",
+            "beneDetails" : self.get_beneDetails()
+        }
+
+        res = requests.post(url, json=body, headers=self.constuct_header())
+        return res.json()
+    
 
     def check_balance(self) -> dict:
         url = f"{self.BASE_URL}{self.ENDPOINTS["check_balance"]}"
